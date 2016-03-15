@@ -43,17 +43,36 @@ kommandot i Programlistning~\ref{listing:mount-share-manual}.
 \end{listing}
 
 Istället för att behöva göra det manuellt varje gång kan mappen läggas till i
-\texttt{/etc/fstab} och monteras automatiskt vid systemstart
-\cite{virtualbox:sharemount}.
+\texttt{/etc/fstab} och monteras automatiskt vid systemstart.
 
 Först görs en säkerhetskopia av \texttt{/etc/fstab} enligt
 Programlistning~\ref{listing:mount-fstab-backup}.
 
+\begin{listing}[H]
+  \shellcode{tex/mount-fstab-backup.sh}
+  \caption{Kommando för att skapa en säkerhetskopia av den befintliga filen.}
+  \label{listing:mount-fstab-backup}
+\end{listing}
+
+Filen öppnas sedan i \texttt{Vim} med \texttt{root}-rättigheter genom
+\texttt{sudo} och en extra rad läggs till enligt \cite{virtualbox:mntshare}.
+
+Den ändrade filens innehåll visas
+Programlistning~\ref{listing:mount-fstab-new}.
+
+\begin{listing}[H]
+  \shellcode{tex/mount-fstab-new.sh}
+  \caption{Innehåll i filen \texttt{/etc/fstab} efter modifiering.}
+  \label{listing:mount-fstab-new}
+\end{listing}
+
+För att få tillgång till den delade mapp som moteras automatiskt genom
+\texttt{Guest Additions} måste användaren vara medlem av gruppen \texttt{vboxsf}
 
 
 % Byt nätverkstyp i VirtualBox till bridged
 % Kolla ip-adress, ifconfig deprecated (?)
-% $ ip a 
+% $ ip a
 % ...
 
 
