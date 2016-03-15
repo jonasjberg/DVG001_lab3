@@ -1,0 +1,155 @@
+% ______________________________________________________________________________
+%
+% DVG001 -- Introduktion till Linux och små nätverk
+%                              Inlämningsuppgift #3
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Author:   Jonas Sjöberg
+%           tel12jsg@student.hig.se
+%
+% Date:     2016-03-15 -- 2016-03-TODO
+%
+% License:  Creative Commons Attribution 4.0 International (CC BY 4.0)
+%           <http://creativecommons.org/licenses/by/4.0/legalcode>
+%           See LICENSE.md for additional licensing information.
+% ______________________________________________________________________________
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\inputencoding{utf8}
+\usepackage[swedish]{babel}
+\usepackage[swedish]{isodate}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{fullpage}
+
+\usepackage{csquotes}               % Behövs av biblatex
+%\usepackage[natbib=true,
+%            style=numeric,
+%            backend=biber]{biblatex}
+\usepackage[natbib=true,
+            style=ieee,
+            backend=biber]{biblatex}
+\addbibresource{tex/refs.bib}
+
+\usepackage[binary-units=true]{siunitx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+%\usepackage{microtype}
+
+\usepackage[pdfusetitle,
+            bookmarks=true,
+            bookmarksnumbered=true,
+            bookmarksopen=false,
+            breaklinks=false,
+            pdfborder={0 0 0},
+            backref=false,
+            colorlinks=false]{hyperref}
+
+\newcommand{\screenshot}[4]{
+\begin{figure}[H]
+\centering
+%\includegraphics[width=\linewidth]{#1}
+\includegraphics[height=8.0cm]{#1}
+\caption[#2]{#3}
+\label{#4}
+\end{figure}
+}
+
+\usepackage{minted}
+\usemintedstyle{bw}
+
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+\newmintedfile[shellcode]{bash}{
+%bgcolor=mintedbackground,
+%fontfamily=tt,
+fontsize=\footnotesize,
+linenos=true,
+numberblanklines=true,
+numbersep=12pt,
+numbersep=5pt,
+%gobble=0,
+frame=lines,
+%framerule=0.4pt,
+framesep=2mm,
+funcnamehighlighting=true,
+tabsize=4,
+obeytabs=false,
+mathescape=false
+samepage=false,
+showspaces=false,
+showtabs =false,
+texcl=false,
+}
+                   
+\renewcommand\listingscaption{Programlistning}
+\renewcommand\listoflistingscaption{Programlistningar}
+
+\usepackage{booktabs}
+\usepackage{longtable}              % Tables span across pages
+
+\usepackage{pdfpages}
+
+
+\title{\textsc{DVG001}                         \\
+       Introduktion till Linux och små nätverk \\
+       Laboration 3}
+
+\author{                                 \\
+  Jonas Sjöberg                          \\
+  860224-xxxx                            \\
+  Högskolan i Gävle                      \\
+  \texttt{tel12jsg@student.hig.se}       \\
+  \texttt{https://github.com/jonasjberg} \\
+}
+
+\date{}
+
+\begin{document}
+  \maketitle
+
+  \begin{center}
+  \begin{tabular}{l r}
+    Utförd: & \isodate \printdate{2016-03-15} -- \today \\
+    Kursansvarig lärare: & Anders Jackson
+  \end{tabular}
+  \end{center}
+
+  \begin{abstract}
+    Laboration i kursen \emph{DVG001 -- Introduktion till Linux och små
+    nätverk} som läses på distans via Högskolan i Gävle under vårterminen 2016.
+  \end{abstract}
+
+  \newpage
+  %\hypersetup{linkcolor=black}
+  \setcounter{tocdepth}{3}
+  \tableofcontents
+
+  \bigskip
+
+  \listoffigures
+  \listoftables
+  \listoflistings
+
+  \newpage
+  \input{tex/intro.tex}
+  \input{tex/content.tex}
+  \input{tex/code.tex}
+
+  \newpage
+  \input{tex/results.tex}
+
+  \addcontentsline{toc}{section}{Referenser}
+  \printbibliography{}
+
+\end{document}
