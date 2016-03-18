@@ -91,12 +91,12 @@ showspaces=false,
 showtabs =false,
 texcl=false,
 }
-                   
+
 \renewcommand\listingscaption{Programlistning}
 \renewcommand\listoflistingscaption{Programlistningar}
 
 \usepackage{booktabs}
-\usepackage{longtable}              % Tables span across pages
+\usepackage{longtable}
 
 \usepackage{pdfpages}
 
@@ -128,6 +128,10 @@ texcl=false,
   \begin{abstract}
     Laboration i kursen \emph{DVG001 -- Introduktion till Linux och små
     nätverk} som läses på distans via Högskolan i Gävle under vårterminen 2016.
+    Laborationen behandlar hantering av användare och grupper, rättigheter och
+    filåtkomst, installation och konfiguration av program, behandling av
+    kataloger och filer, samt visualisering av filsystemet med skapandet av en
+    trädstruktur.
   \end{abstract}
 
   \newpage
@@ -144,6 +148,9 @@ texcl=false,
   \newpage
   \input{tex/intro.tex}
   \input{tex/content.tex}
+  \input{tex/part1.tex}
+  \input{tex/part2.tex}
+  \input{tex/part3.tex}
 
   \newpage
   \input{tex/results.tex}

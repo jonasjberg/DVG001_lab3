@@ -18,8 +18,10 @@ Denna inlämningsuppgift består av tre delar.
 * Ni skall titta på hur man kan skapa användare och grupper, samt se hur
   grupper kan användas för att styra vad som får göras i Debian, inte bara
   styra åtkomst av filer.
+
 * Ni skall lära er hur installation och konfiguration av programpaket i Debian
   kan se ut genom att installera och konfigurera två programpaket.
+
 * Ni skall skapa en trädstruktur med kataloger och filer, samt sedan undersöka
   hur rättigheter påverkar hur användare får använda filer och kataloger.
 
@@ -30,27 +32,27 @@ Här skall ni se till att programmet `sudo(8)` och att
 tidssynkroniseringsprogrammet `ntpd` finns installerat på er maskin.
 
 För att administrera en Linux-maskin så behöver man rättigheter att ändra filer
-och kataloger.  Dessa rättigheter har administratörsanvändaren root. Den
+och kataloger.  Dessa rättigheter har administratörsanvändaren `root`. Den
 användaren får göra vad som helst på maskinen. Så den som har tillgång till
-lösenordet till root kan följdaktligen göra vad som helst på maskinen.
+lösenordet till `root` kan följdaktligen göra vad som helst på maskinen.
 
-Risken att en hemlighet röjs till obehöriga, som root:s lösenord, stiger för
+Risken att en hemlighet röjs till obehöriga, som `root`:s lösenord, stiger för
 varje person som känner till det. Därför vill man att så få som möjligt behöver
 känna till det. Men man kan fortfarande vilja att fler än en användare skall
 kunna administrera maskinen. Så, hur löser man detta utan att de får tillgång
 till lösenordet?
 
-Jo, det finns ett program som heter sudo, som tillåter att vissa godkända
+Jo, det finns ett program som heter `sudo`, som tillåter att vissa godkända
 användare kan utföra kommandon som någon annan användare, som exempelvis
-användaren root. Detta är bra, eftersom då behöver inte någon känna till
-lösenordet till användaren root, men kan fortfarande utföra kommandon som
-användaren root. Detta leder då till att risken att lösenordet för root kommer
-på villovägar minimeras. En annan fördel är att man i efterhand kan se vad
-olika användare har gjort. Tredje fördelen är att man kan hindra root från att
-logga in över huvud taget, så de som eventuellt vill försöka bryta sig in i
-maskinen har ett konto mindre som de kan ta sig in med.  Ett till problem som
-vi skall lösa i laborationen är att se till att alla maskiner i nätverket har
-samma tid.
+användaren `root`. Detta är bra, eftersom då behöver inte någon känna till
+lösenordet till användaren `root`. men kan fortfarande utföra kommandon som
+användaren `root`. Detta leder då till att risken att lösenordet för `root`
+kommer på villovägar minimeras. En annan fördel är att man i efterhand kan se
+vad olika användare har gjort. Tredje fördelen är att man kan hindra `root`
+från att logga in över huvud taget, så de som eventuellt vill försöka bryta sig
+in i maskinen har ett konto mindre som de kan ta sig in med.  Ett till problem
+som vi skall lösa i laborationen är att se till att alla maskiner i nätverket
+har samma tid.
 
 Om datorer har olika tid, så kan man inte jämföra loggar mellan maskiner för
 att återskapa i vilken ordning saker hände, exempelvis vid intrångsförsök. Om
@@ -87,7 +89,7 @@ För mer information om ett program/paket så kan man som vanligt använda
 Där hittar man rätt mycket intressant information.
 
 
-Installera sudo
+Installera `sudo`
 --------------------------------------------------------------------------------
 För att få tillgång till kommandot `sudo`, så behöver rätt paket installeras.
 Kommandon finns normalt i katalogerna `/bin/` och `/usr/bin/`. Så leta reda på
@@ -95,7 +97,7 @@ vilket paket som innehåller kommandot `sudo` och installera detta paket, om det
 inte redan är installerat. Många konfigurationsfiler till kommandon finns under
 katalogen `/etc/`, så det är alltid en bra idé att titta där, förutom i de
 andra ställena. Där hittar ni konfigurationsfilen till `sudo` som talar om
-vilka användare och grupper av användare som får använda kommandot sudo. För
+vilka användare och grupper av användare som får använda kommandot `sudo`. För
 att veta vilken fil det är och hur den fungerar, sök efter `sudo` i Debians
 wiki-dokumentation eller i manualsidan för `sudo`.
 
@@ -105,7 +107,7 @@ Installera ntp
 Debian-paketet `ntp` innehåller programvaran för att synkronisera tiden mellan
 olika datorer. För att det skall fungera bra, så behöver klockorna ställas in
 när maskinen startar om. För om klockan går för mycket fel, så kan inte `ntp`
-ställa klockan. Därför behöver vi även programmet ntpdate, som sätter klockan
+ställa klockan. Därför behöver vi även programmet `ntpdate`, som sätter klockan
 när datorn startar. Det finns ett antal atomur som man kommer åt via internet.
 Vilka det är kan man se på webbsidan i punkt två nedan.
 
@@ -173,19 +175,57 @@ Exekvera sedan kommandona nedan i given ordning som användaren som ni skapade i
 del två.  Om ni är osäkra på kommandona, så läs manualsidan med
 `man(1)`-kommandot samt prova gärna dem var för sig.
 
-* `touch /tmp/del3/a1/f1`
-* `sudo touch /tmp/del3/a3/f1`
-* `sudo echo ”Hello World” | tee /tmp/del3/a3/f1`
-* `sudo echo ”Hello World” | tee /tmp/del3/a2`
-* `sudo echo ”Hello World” | tee /tmp/del3/a4`
-* `cat /tmp/del3/a2`
-* `sudo cat /tmp/del3/a2`
-* `cat /tmp/del3/a4`
-* `sudo cat /tmp/del3/a4`
-* `echo ”Goodbye World” | sudo tee /tmp/del3/a2`
-* `cat /tmp/del3/a2`
-* `sudo cat /tmp/del3/a2`
-* `sudo rm -r /tmp/del3/ # Observera att det är /tmp`
+* ```bash
+  touch /tmp/del3/a1/f1`
+  ```
+
+* ```bash
+  sudo touch /tmp/del3/a3/f1`
+  ```
+
+* ```bash
+  sudo echo ”Hello World” | tee /tmp/del3/a3/f1`
+  ```
+
+* ```bash
+  sudo echo ”Hello World” | tee /tmp/del3/a2`
+  ```
+
+* ```bash
+  sudo echo ”Hello World” | tee /tmp/del3/a4`
+  ```
+
+* ```bash
+  cat /tmp/del3/a2`
+  ```
+
+* ```bash
+  sudo cat /tmp/del3/a2`
+  ```
+
+* ```bash
+  cat /tmp/del3/a4`
+  ```
+
+* ```bash
+  sudo cat /tmp/del3/a4`
+  ```
+
+* ```bash
+  echo ”Goodbye World” | sudo tee /tmp/del3/a2`
+  ```
+
+* ```bash
+  cat /tmp/del3/a2`
+  ```
+
+* ```bash
+  sudo cat /tmp/del3/a2`
+  ```
+
+* ```bash
+  sudo rm -r /tmp/del3/ # Observera att det är /tmp`
+  ```
 
 Redovisa genom att skriva de kommandon som ni använder för att skapa
 katalogerna, filerna samt sätter rättigheterna. Förklara vad varje kommandorad
@@ -265,4 +305,4 @@ Referenser
 <http://sv.wikipedia.org/wiki/Network_Time_Protocol> (Kort beskrivning av NTP-protokollet)  
 <http://en.wikipedia.org/wiki/NTP_pool> (NTP-servrar på internet)  
 <http://www.pool.ntp.org/sv/> (Svenska NTP-servrar)  
-
+%
