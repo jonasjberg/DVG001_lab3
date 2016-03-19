@@ -22,18 +22,17 @@ Installation och konfiguration av \texttt{sudo} var ett mer eller mindre
 nödvändigt steg i förberedelsen av den utvecklingsmiljö som skulle komma att
 användas under laborationen.
 
-Den beskrivning som följer är hämtad direkt från föregående rapport.
+Den beskrivning som följer är delvis hämtad direkt från föregående rapport.
 
 
 % ______________________________________________________________________________
 \subsection{Installera \texttt{sudo}}
-Den första delen av arbetet bestod av att konfigurera utvecklingsmiljön
 För att kunna installera program och sköta andra administrativa sysslor
 konfigureras \texttt{sudo} enligt följande:
 
 \begin{enumerate}
   \item Användaren läggs till i \texttt{sudo}-gruppen med kommandot:
-        \texttt{$ adduser jonas sudo}
+        \texttt{\$ adduser jonas sudo}
 
   \item Konfigurationsfilen för \texttt{sudo} ändras. Genom att köra
         följande kommandon så öppnar en särskild texteditor som tillåter en
@@ -49,7 +48,28 @@ konfigureras \texttt{sudo} enligt följande:
         administratör med hjälp av \texttt{sudo}.
 \end{enumerate}
 
+Programmet \texttt{sudo} ligger i paketet med samma namn.
+För att ta redo på vilket paket som innehåller en viss fil kan man använda
+kommandot i Programlistning~\ref{listing:dpkg-search}.
 
+\begin{listing}[H]
+\shellcode{tex/dpkg-search.sh}
+\caption{Kommando för att söka efter filer i paket.}
+\label{listing:dpkg-search}
+\end{listing}
+
+Programmet \texttt{sudo} installeras automatiskt om lösenord för
+\texttt{root}-användaren inte specifieras under installationen av
+\texttt{Debian}. Från ''Debian GNU\slash Linux Installation Guide''
+\cite{debian:install}:
+
+\begin{quotation}
+By default you are asked to provide a password for the “root” (administrator)
+account and information necessary to create one regular user account. If you do
+not specify a password for the “root” user this account will be disabled but
+the sudo package will be installed later to enable administrative tasks to be
+carried out on the new system. 
+\end{quotation}
 
 % ______________________________________________________________________________
 \subsection{Installera \texttt{ntp}}
