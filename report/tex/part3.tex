@@ -19,7 +19,64 @@
 
 % ______________________________________________________________________________
 \subsection{Skapa katalogstruktur}
-% TODO: Skapa användare, se till att användaren kan använda sudo.
+Här ska rättigheter för användare demonstreras genom skapande av en uppsättning filer
+och kataloger. Den katalogstruktur som efterfrågas visas i Tabell~\ref{table:tree}.
+
+\begin{table}[]
+  \centering
+  \caption{Efterfrågad katalogstruktur}
+  \label{table:tree}
+  \begin{tabular}{@{}llll@{}}
+    \toprule
+            Sökväg         & Rättigheter                   & Ägare                     & Grupp               \\ \midrule
+    \texttt{/tmp/del3}     & \texttt{drwxr-xr-x}           & Användaren från del två   & Gruppen som användaren tillhör \\
+    \texttt{/tmp/del3/a1}  & \texttt{drwx-{}-{}-{}-{}-{}-} & \texttt{root}             & Gruppen som användaren tillhör \\
+    \texttt{/tmp/del3/a2}  & \texttt{-rwxr-{}-r-{}-}       &  Användaren från del två  & \texttt{root}                  \\
+    \texttt{/tmp/del3/a3}  & \texttt{drwxr-{}-r-{}-}       &  Användaren från del två  & Gruppen som användaren tillhör \\
+    \texttt{/tmp/del3/a4}  & \texttt{-rwxrwx-{}-{}-}       & \texttt{root}             & \texttt{root}                  \\\bottomrule
+  \end{tabular}
+\end{table}
+
+
+% ______________________________________________________________________________
+\subsubsection{Skapa \texttt{/tmp/del3/a1}}
+Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a1}.
+
+\begin{listing}[H]
+\shellcode{tex/part3-del3a1}
+\caption{Skapandet av \texttt{/tmp/del3/a1}}
+\label{listing:part3-del3a1}
+\end{listing}
+
+% ______________________________________________________________________________
+\subsubsection{Skapa \texttt{/tmp/del3/a2}}
+Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a2}.
+
+\begin{listing}[H]
+\shellcode{tex/part3-del3a2}
+\caption{Skapandet av \texttt{/tmp/del3/a2}}
+\label{listing:part3-del3a2}
+\end{listing}
+
+% ______________________________________________________________________________
+\subsubsection{Skapa \texttt{/tmp/del3/a3}}
+Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a3}.
+
+\begin{listing}[H]
+\shellcode{tex/part3-del3a3}
+\caption{Skapandet av \texttt{/tmp/del3/a3}}
+\label{listing:part3-del3a3}
+\end{listing}
+
+% ______________________________________________________________________________
+\subsubsection{Skapa \texttt{/tmp/del3/a4}}
+Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a4}.
+
+\begin{listing}[H]
+\shellcode{tex/part3-del3a4}
+\caption{Skapandet av \texttt{/tmp/del3/a4}}
+\label{listing:part3-del3a4}
+\end{listing}
 
 
 % ______________________________________________________________________________

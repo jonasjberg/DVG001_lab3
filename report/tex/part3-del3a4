@@ -1,0 +1,5 @@
+gibson@debian:/tmp$ sudo touch /tmp/del3/a4
+gibson@debian:/tmp$ sudo chmod -v 770 !$
+sudo chmod -v 770 /tmp/del3/a4
+mode of ‘/tmp/del3/a4’ changed from 0644 (rw-r--r--) to 0770 (rwxrwx---)
+gibson@debian:/tmp$ 
