@@ -55,6 +55,7 @@ kommandot i Programlistning~\ref{listing:dpkg-search}.
 \end{listing}
 
 
+% ______________________________________________________________________________
 \subsection{Konfiguration av \texttt{sudo}}
 För att kunna installera program och sköta andra administrativa sysslor
 konfigureras \texttt{sudo} enligt följande:
@@ -90,6 +91,7 @@ tidsinställningar.  Det görs med \texttt{Debian}-paketet \texttt{ntp} som
 ställer datorns klocka efter atomur som görs tillgängliga över internet genom
 särskilda servrar.
 
+% ______________________________________________________________________________
 \subsubsection{Installation av programmet \texttt{ntpdate} och \texttt{ntp}}
 För att söka efter paketet \texttt{ntp} i lokala listor över paketförrådens
 innehåll används kommandot i Programlistning~\ref{listing:ntp-apt-search},
@@ -120,6 +122,7 @@ Användning av \texttt{apt}, \texttt{aptitude} eller
 det nyaste och mest användarvänliga, föredrar användare många gånger ändå
 att använda \texttt{apt}, av många olika skäl \cite{superuser:aptitude-apt}.
 
+
 Efter installationen kan ett sökkommando motsvarande det i
 Programlistning~\ref{listing:ntp-apt-search} köras, fast den här gången med
 \texttt{aptitude}, som erbjuder inbyggd filtrering av resultat. Här visas
@@ -132,6 +135,8 @@ Programlistning~\ref{listing:ntp-aptitude-search}.
 \label{listing:ntp-aptitude-search}
 \end{listing}
 
+
+% ______________________________________________________________________________
 \subsubsection{Konfiguration av \texttt{ntpdate} och \texttt{ntp}}
 Programmen \texttt{ntpdate} och \texttt{ntp} konfigureras så att de använder
 samma atomur-server på internet från ''ntp-pool''-projektet, exempelvis
@@ -143,14 +148,6 @@ Efter installationen av programmen kan information som vanligt läsas från
 manualsidorna. Konfigurationsfilen \texttt{/etc/ntp.conf} innehåller
 standardinställningar, däribland en lista med servrar som används vid
 tidssynkronisering. Ett utdrag visas i Programlistning~\ref{listing:ntp-conf}.
-Raderna kan ändras för att innehålla de servrar vi själva vill använda,
-förslagsvis svenska servrar vilket kan antas ge bättre tillförlitlighet och
-snabbare respons. Ändringar görs med texteditorn \texttt{vim} som körs med
-högre rättigheter med hjälp av \texttt{sudo}.
-
-Nämnvärt är ordet \texttt{iburst} som är en \texttt{command option} som 
-beskrivs i manualsidan för \texttt{ntp.conf(5)}.
-
 
 \begin{listing}[H]
 \configfile[firstline=18,lastline=24]{tex/ntp-config-default}
@@ -158,10 +155,28 @@ beskrivs i manualsidan för \texttt{ntp.conf(5)}.
 \label{listing:ntp-conf}
 \end{listing}
 
+Nämnvärt är ordet \texttt{iburst} som är en \texttt{command option} som 
+beskrivs i manualsidan för \texttt{ntp.conf(5)}:
+
+\begin{quotation}
+When  the  server  is  unreachable, send a burst of eight packets
+instead of the usual one.  The packet spacing is normally 2 s; however, the
+spacing between the first and second packets can be changed with the calldelay
+command to allow additional time for a modem or ISDN call to  complete.   This
+option is valid with only the server command and is a recommended option with
+this command.
+\end{quotation}
+
+
+Raderna kan ändras för att innehålla de servrar vi själva vill använda,
+förslagsvis svenska servrar vilket kan antas ge bättre tillförlitlighet och
+snabbare respons. 
 På ''ntp pool''-projektets sida \url{http://www.pool.ntp.org/zone/se} finns en
 lista över svenska servrar tillsammans med statistik över deras aktivitet.
-Enligt instruktioner läggs rader till i konfigurationsfilen, som då får
-utseendet som visas i Programlistning~\ref{listing:ntp-conf-mod}.
+Enligt instruktioner \cite{ntp:pool-use} läggs rader till i
+konfigurationsfilen, som då får utseendet som visas i
+Programlistning~\ref{listing:ntp-conf-mod}.  Ändringarna görs med texteditorn
+\texttt{vim} som körs med högre rättigheter med hjälp av \texttt{sudo}.
 
 \begin{listing}[H]
 \configfile[firstline=18,lastline=28]{tex/ntp-config-modified}
@@ -170,9 +185,10 @@ servrar från en svensk ''pool zone''.}
 \label{listing:ntp-conf-mod}
 \end{listing}
 
-Efter att konfigurationsfilen har modifierats startas \texttt{ntpd} om,
-varpå en lista med ''peers'' som servern känner till skrivs ut. Detta
-visas i Programlistning~\ref{listing:ntp-reload-list}.
+
+Efter att konfigurationsfilen har modifierats startas \texttt{ntpd} om
+\cite{ubuntu:ntp-serverguide}, varpå en lista med ''peers'' som servern känner
+till skrivs ut. Detta visas i Programlistning~\ref{listing:ntp-reload-list}.
 
 \begin{listing}[H]
 \shellcode{tex/ntp-reload-list}
