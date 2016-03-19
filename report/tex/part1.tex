@@ -22,42 +22,11 @@ Installation och konfiguration av \texttt{sudo} var ett mer eller mindre
 nödvändigt steg i förberedelsen av den utvecklingsmiljö som skulle komma att
 användas under laborationen.
 
-Den beskrivning som följer är delvis hämtad direkt från föregående rapport.
+Den beskrivning som följer är därför delvis hämtad direkt från föregående rapport.
 
 
 % ______________________________________________________________________________
-\subsection{Installera \texttt{sudo}}
-För att kunna installera program och sköta andra administrativa sysslor
-konfigureras \texttt{sudo} enligt följande:
-
-\begin{enumerate}
-  \item Användaren läggs till i \texttt{sudo}-gruppen med kommandot:
-        \texttt{\$ adduser jonas sudo}
-
-  \item Konfigurationsfilen för \texttt{sudo} ändras. Genom att köra
-        följande kommandon så öppnar en särskild texteditor som tillåter en
-        säkrare mijö för att ändra i filen \texttt{/etc/sudoers}:
-        
-        \texttt{\$ su} \\
-        \texttt{\$ visudo}
-
-        Med texteditorn lägger man till raden:
-        \texttt{jonas ALL=(ALL:ALL) ALL}
-
-        Det ger användaren \texttt{jonas} möjlighet att köra alla kommandon som 
-        administratör med hjälp av \texttt{sudo}.
-\end{enumerate}
-
-Programmet \texttt{sudo} ligger i paketet med samma namn.
-För att ta redo på vilket paket som innehåller en viss fil kan man använda
-kommandot i Programlistning~\ref{listing:dpkg-search}.
-
-\begin{listing}[H]
-\shellcode{tex/dpkg-search.sh}
-\caption{Kommando för att söka efter filer i paket.}
-\label{listing:dpkg-search}
-\end{listing}
-
+\subsection{Installation av \texttt{sudo}}
 Programmet \texttt{sudo} installeras automatiskt om lösenord för
 \texttt{root}-användaren inte specifieras under installationen av
 \texttt{Debian}.  Av den anledningen behövde jag själv inte installera
@@ -75,16 +44,53 @@ carried out on the new system.
 \end{quotation}
 
 
+Programmet \texttt{sudo} ligger i paketet med samma namn.
+För att ta redo på vilket paket som innehåller en viss fil kan man använda
+kommandot i Programlistning~\ref{listing:dpkg-search}.
+
+\begin{listing}[H]
+\shellcode{tex/dpkg-search.sh}
+\caption{Kommando för att söka efter filer i paket.}
+\label{listing:dpkg-search}
+\end{listing}
+
+
+\subsection{Konfiguration av \texttt{sudo}}
+För att kunna installera program och sköta andra administrativa sysslor
+konfigureras \texttt{sudo} enligt följande:
+
+\begin{enumerate}
+  \item Användaren läggs till i \texttt{sudo}-gruppen med kommandot:
+
+        \texttt{\$ adduser jonas sudo}
+
+  \item Konfigurationsfilen för \texttt{sudo} ändras. Genom att köra
+        följande kommandon så öppnar en särskild texteditor som tillåter en
+        säkrare mijö för att ändra i filen \texttt{/etc/sudoers}:
+        
+        \texttt{\$ su} \\
+        \texttt{\$ visudo}
+
+        Med texteditorn lägger man till raden:
+        \texttt{jonas ALL=(ALL:ALL) ALL}
+
+        Det ger användaren \texttt{jonas} möjlighet att köra alla kommandon som 
+        administratör med hjälp av \texttt{sudo}.
+\end{enumerate}
+
+
+
+
 
 
 % ______________________________________________________________________________
-\subsection{Installera \texttt{ntp}}
+\subsection{Installation av \texttt{ntp}}
 Här installeras programvara för att synkronisera olika datorers
 tidsinställningar.  Det görs med \texttt{Debian}-paketet \texttt{ntp} som
-ställer datorns klocka efter atomur, särskilda servrar som agerar
-tidsstandarder och finns tillgängliga över internet.
+ställer datorns klocka efter atomur. Särskilda servrar som agerar
+tidsstandarder finns tillgängliga över internet.
 
-\subsubsection{Installera programmet \texttt{ntpdate} och \texttt{ntp}}
+\subsubsection{Installation av programmet \texttt{ntpdate} och \texttt{ntp}}
 För att söka efter paketet \texttt{ntp} i lokala listor över paketförrådens
 innehåll används kommandot i Programlistning~\ref{listing:ntp-apt-search},
 som dessutom använder \texttt{grep} för att bara visa rader som börjar med
@@ -92,15 +98,54 @@ som dessutom använder \texttt{grep} för att bara visa rader som börjar med
 
 \begin{listing}[H]
 \shellcode{tex/ntp-apt-search.sh}
-\caption{Kommando för att söka efter filer i paket.}
+\caption{Kommando för att söka i lokala paketlistor efter textsträngar.}
 \label{listing:ntp-apt-search}
 \end{listing}
 
+
+Programmen installeras sedan genom att köra kommandot i
+Programlistning~\ref{listing:ntp-install}, som också visar information som skrivs
+ut av \texttt{apt} under installationsprocessen.
+
+\begin{listing}[H]
+\shellcode{tex/ntp-install.sh}
+\caption{Kommando för att installera programmen \texttt{ntp} och \texttt{ntpdate}.}
+\label{listing:ntp-install}
+\end{listing}
+
+
+Användning av \texttt{apt}, \texttt{aptitude} eller
+\texttt{dpkg} är många gånger utbytbar, både \texttt{apt} och \texttt{aptitude}
+är abstraktioner byggda ovanpå \texttt{dpkg}. Även om \texttt{aptitude} ska vara
+det nyaste och mest användarvänliga, föredrar användare många gånger ändå
+att använda \texttt{apt}, av många olika skäl \cite{superuser:aptitude-apt}.
+
+Efter installationen kan ett sökkommando motsvarande det i
+Programlistning~\ref{listing:ntp-apt-search} köras, fast den här gången med
+\texttt{aptitude}, som erbjuder inbyggd filtrering av resultat. Här visas
+träffar som börjar med ''ntp''. Resultatet visas i
+Programlistning~\ref{listing:ntp-aptitude-search}.
+
+\begin{listing}[H]
+\shellcode{tex/ntp-aptitude-search.sh}
+\caption{Kommando för att söka bland installerade paket med \texttt{aptitude}.}
+\label{listing:ntp-aptitude-search}
+\end{listing}
+
 \subsubsection{Konfiguration av \texttt{ntpdate} och \texttt{ntp}}
-% TODO: ..
-%
-% Konfigurera dem så att de använder samma atomur-server på internet från
-% ntp-pool-projektet, exempelvis <1.debian.pool.ntp.org> och
-% <2.debian.pool.ntp.org> eller <1.se.pool.ntp.org> och <2.se.pool.ntp.org>.
+Programmen \texttt{ntpdate} och \texttt{ntp} konfigureras så att de använder
+samma atomur-server på internet från ''ntp-pool''-projektet, exempelvis
+\url{1.debian.pool.ntp.org} och \url{2.debian.pool.ntp.org} eller
+\url{1.se.pool.ntp.org} och \url{2.se.pool.ntp.org}.
 % Se <http://www.pool.ntp.org/>.
 
+Efter installationen av programmen kan information som vanligt läsas från
+manualsidorna. Konfigurationsfilen \texttt{/etc/ntp.conf} innehåller 
+standardinställningar och en del instruktioner, däribland en lista med
+# pool.ntp.org maps to about 1000 low-stratum NTP servers.  Your server will
+# pick a different set every time it starts up.  Please consider joining the
+# pool: <http://www.pool.ntp.org/join.html>
+server 0.debian.pool.ntp.org iburst
+server 1.debian.pool.ntp.org iburst
+server 2.debian.pool.ntp.org iburst
+server 3.debian.pool.ntp.org iburstservrar att använda, se 
