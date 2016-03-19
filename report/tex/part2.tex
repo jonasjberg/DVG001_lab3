@@ -35,7 +35,10 @@ någon telefon. En del av fälten lämnas därför tomma.
 % ______________________________________________________________________________
 \subsection{Logga in som den nya användaren}
 Efter att den nya användaren har skapats så loggar man in som den nya
-användaren.  En testkörning av \texttt{ifconfig} med \texttt{sudo} visar också
+användaren.  
+
+\subsubsection{Testkörning av \texttt{sudo} med den nya användaren}
+En testkörning av \texttt{ifconfig} med \texttt{sudo} visar också
 att användaren ''gibson'' inte har möjlighet att köra program med högre
 privilegier ännu. Körningen visas i Programlistning~\ref{listing:su-gibson}.
 
@@ -45,3 +48,20 @@ privilegier ännu. Körningen visas i Programlistning~\ref{listing:su-gibson}.
 \label{listing:su-gibson}
 \end{listing}
 
+
+% ______________________________________________________________________________
+\subsubsection{Lägga till den nya användaren i gruppen \texttt{sudo}}
+För att ge den nya användaren möjlighet att köra \texttt{sudo} läggs den till i
+gruppen som kallas \texttt{sudoers}. Detta visas i
+Programlistning~\ref{listing:sudoers-gibson} tillsammans med en testkörning för
+att verifiera att användaren fått möjlighet att köra kommandon som
+\texttt{root} genom \texttt{sudo}.
+
+\begin{listing}[H]
+\shellcode{tex/sudoers-gibson}
+\caption{Inkludering av användaren ''gibson'' i gruppen \texttt{sudoers} och testkörning.}
+\label{listing:sudoers-gibson}
+\end{listing}
+
+
+Användaren ''gibson'' kan nu köra programmet \texttt{ifconfig} utan problem.
