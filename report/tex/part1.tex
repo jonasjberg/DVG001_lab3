@@ -60,7 +60,10 @@ kommandot i Programlistning~\ref{listing:dpkg-search}.
 
 Programmet \texttt{sudo} installeras automatiskt om lösenord för
 \texttt{root}-användaren inte specifieras under installationen av
-\texttt{Debian}. Från ''Debian GNU\slash Linux Installation Guide''
+\texttt{Debian}.  Av den anledningen behövde jag själv inte installera
+\texttt{sudo}, bara konfiguration var nödvändig.
+
+Från ''Debian GNU\slash Linux Installation Guide''
 \cite{debian:install}:
 
 \begin{quotation}
@@ -71,6 +74,9 @@ the sudo package will be installed later to enable administrative tasks to be
 carried out on the new system. 
 \end{quotation}
 
+
+
+
 % ______________________________________________________________________________
 \subsection{Installera \texttt{ntp}}
 Här installeras programvara för att synkronisera olika datorers
@@ -79,7 +85,16 @@ ställer datorns klocka efter atomur, särskilda servrar som agerar
 tidsstandarder och finns tillgängliga över internet.
 
 \subsubsection{Installera programmet \texttt{ntpdate} och \texttt{ntp}}
-% TODO: ..
+För att söka efter paketet \texttt{ntp} i lokala listor över paketförrådens
+innehåll används kommandot i Programlistning~\ref{listing:ntp-apt-search},
+som dessutom använder \texttt{grep} för att bara visa rader som börjar med
+''ntp''.
+
+\begin{listing}[H]
+\shellcode{tex/ntp-apt-search.sh}
+\caption{Kommando för att söka efter filer i paket.}
+\label{listing:ntp-apt-search}
+\end{listing}
 
 \subsubsection{Konfiguration av \texttt{ntpdate} och \texttt{ntp}}
 % TODO: ..

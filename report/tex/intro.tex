@@ -48,35 +48,25 @@ under laborationen:
 
 \begin{itemize}
   \item Laborationen utförs på en \texttt{ProBook-6545b} laptop som kör
-        \texttt{Xubuntu 15.10} på \texttt{Linux 3.19.0-28-generic}.
+        \texttt{Xubuntu 15.10} på kerneln \texttt{Linux 3.19.0-28-generic}.
 
   \item Rapporten skrivs i \LaTeX\  som kompileras till pdf med \texttt{latexmk}.
 
   \item Både rapporten och koden skrivs med texteditorn \texttt{Vim}.
 
   \item För versionshantering av både rapporten och programkod används \texttt{Git}.
+    \begin{itemize}
+      \item Källkod till programmet och rapporten finns att hämta på:
+
+            \url{https://github.com/jonasjberg/DVG001\_lab3}
+
+      \item Hämta hem repon genom att exekvera följande från kommandoraden:
+            
+            \texttt{git clone git@github.com:jonasjberg/DVG001\_lab3.git}
+
+    \end{itemize}
 
   \item Virtualisering sker med \texttt{Oracle VirtualBox} version
         \texttt{5.0.10\_Ubuntu r104061}.
 \end{itemize}
-
-\subsubsection{Versionshantering}
-Koden hålls under versionshantering av \texttt{Git}. 
-
-%Själva arbetet sker genom
-%att projektets ''repository'' klonas in i Debian-maskinen med kommandot i
-%Programlistning~\ref{listing:gitclone}:
-
-%\begin{listing}[H]
-%\shellcode{tex/git-clone.sh}
-%\caption{Kommando för att hämta in projektet från värdsystemet}
-%\label{listing:gitclone}
-%\end{listing}
-
-% TODO: Git push/pull ..
-
-
-\subsubsection{SSH och Vim}
-Därefter sköts arbetet med koden genom en \texttt{SSH}-anslutning in i
-gästsystemet.  All kod skrivs i text-editorn \texttt{Vim}. 
 
