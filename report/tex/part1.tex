@@ -87,8 +87,8 @@ konfigureras \texttt{sudo} enligt följande:
 \subsection{Installation av \texttt{ntp}}
 Här installeras programvara för att synkronisera olika datorers
 tidsinställningar.  Det görs med \texttt{Debian}-paketet \texttt{ntp} som
-ställer datorns klocka efter atomur. Särskilda servrar som agerar
-tidsstandarder finns tillgängliga över internet.
+ställer datorns klocka efter atomur som görs tillgängliga över internet genom
+särskilda servrar.
 
 \subsubsection{Installation av programmet \texttt{ntpdate} och \texttt{ntp}}
 För att söka efter paketet \texttt{ntp} i lokala listor över paketförrådens
@@ -140,12 +140,42 @@ samma atomur-server på internet från ''ntp-pool''-projektet, exempelvis
 % Se <http://www.pool.ntp.org/>.
 
 Efter installationen av programmen kan information som vanligt läsas från
-manualsidorna. Konfigurationsfilen \texttt{/etc/ntp.conf} innehåller 
-standardinställningar och en del instruktioner, däribland en lista med
-# pool.ntp.org maps to about 1000 low-stratum NTP servers.  Your server will
-# pick a different set every time it starts up.  Please consider joining the
-# pool: <http://www.pool.ntp.org/join.html>
-server 0.debian.pool.ntp.org iburst
-server 1.debian.pool.ntp.org iburst
-server 2.debian.pool.ntp.org iburst
-server 3.debian.pool.ntp.org iburstservrar att använda, se 
+manualsidorna. Konfigurationsfilen \texttt{/etc/ntp.conf} innehåller
+standardinställningar, däribland en lista med servrar som används vid
+tidssynkronisering. Ett utdrag visas i Programlistning~\ref{listing:ntp-conf}.
+Raderna kan ändras för att innehålla de servrar vi själva vill använda,
+förslagsvis svenska servrar vilket kan antas ge bättre tillförlitlighet och
+snabbare respons. Ändringar görs med texteditorn \texttt{vim} som körs med
+högre rättigheter med hjälp av \texttt{sudo}.
+
+Nämnvärt är ordet \texttt{iburst} som är en \texttt{command option} som 
+beskrivs i manualsidan för \texttt{ntp.conf(5)}.
+
+
+\begin{listing}[H]
+\configfile[firstline=18,lastline=24]{tex/ntp-config-default}
+\caption{Utdrag ur den omodifierade konfigurationsfilen för \texttt{ntp}.}
+\label{listing:ntp-conf}
+\end{listing}
+
+På ''ntp pool''-projektets sida \url{http://www.pool.ntp.org/zone/se} finns en
+lista över svenska servrar tillsammans med statistik över deras aktivitet.
+Enligt instruktioner läggs rader till i konfigurationsfilen, som då får
+utseendet som visas i Programlistning~\ref{listing:ntp-conf-mod}.
+
+\begin{listing}[H]
+\configfile[firstline=18,lastline=28]{tex/ntp-config-modified}
+\caption{Utdrag ur konfigurationsfilen för \texttt{ntp} efter inkludering av
+servrar från en svensk ''pool zone''.}
+\label{listing:ntp-conf-mod}
+\end{listing}
+
+Efter att konfigurationsfilen har modifierats startas \texttt{ntpd} om,
+varpå en lista med ''peers'' som servern känner till skrivs ut. Detta
+visas i Programlistning~\ref{listing:ntp-reload-list}.
+
+\begin{listing}[H]
+\shellcode{tex/ntp-reload-list}
+\caption{Omstart av \texttt{ntpd} och listning av ''peers''.}
+\label{listing:ntp-reload-list}
+\end{listing}

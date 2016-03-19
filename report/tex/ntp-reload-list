@@ -1,0 +1,12 @@
+jonas@debian:~$ sudo service ntp reload
+jonas@debian:~$ sudo ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+xgolf.zq1.de     235.106.237.243  3 u    5   64   17   36.291  -37.524 159.849
++pool.ntp.connec 192.36.144.22    2 u    1   64   25  471.520  -266.49 218.278
++ns2.wlg.telesma 202.46.178.18    2 u   11   64   17  470.755  -86.544  57.309
+*h79-138-40-123. .PPS.            1 u    7   64   37   35.410  -51.163 124.941
+-ntp1.flashdance 192.36.144.22    2 u   39   64   37    7.582  -46.171  22.770
++public-timehost 193.11.166.20    2 u   39   64   37   89.720  -85.851  57.701
++ntp2.flashdance 192.36.144.22    2 u   40   64   37    9.043  -47.073  27.763
+jonas@debian:~$
