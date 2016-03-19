@@ -1,0 +1,27 @@
+jonas@debian:~$ sudo adduser gibson sudo
+Adding user `gibson' to group `sudo' ...
+Adding user gibson to group sudo
+Done.
+jonas@debian:~$ su gibson
+Password:
+gibson@debian:/home/jonas$ sudo ifconfig
+[sudo] password for gibson:
+eth0      Link encap:Ethernet  HWaddr 08:00:27:f1:08:4e
+          inet addr:192.168.1.109  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fef1:84e/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:948 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:761 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:88709 (86.6 KiB)  TX bytes:85083 (83.0 KiB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:109 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:109 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:19955 (19.4 KiB)  TX bytes:19955 (19.4 KiB)
+
+gibson@debian:/home/jonas$

@@ -19,25 +19,29 @@
 
 % ______________________________________________________________________________
 \subsection{Skapa en användare}
-% TODO: Skapa användare, se till att användaren kan använda sudo.
+Här skapas en ny användare med kommandot \texttt{adduser}.  Skapandet av
+användaren ''gibson'' visas i Programlistning~\ref{listing:adduser-gibson}.
+
+\begin{listing}[H]
+\shellcode{tex/adduser-gibson}
+\caption{Skapande av en ny användare ''gibson''.}
+\label{listing:adduser-gibson}
+\end{listing}
+
+Min katt Gibson har inte ett eget rum och använder för tillfället inte heller
+någon telefon. En del av fälten lämnas därför tomma.
 
 
 % ______________________________________________________________________________
 \subsection{Logga in som den nya användaren}
-% TODO: ..
-% När ni skapat användaren så skall ni logga in i den nya användaren och
-% demonstrera att ni från den användaren kan köra kommandon som användaren
-% `root`.
+Efter att den nya användaren har skapats så loggar man in som den nya
+användaren.  En testkörning av \texttt{ifconfig} med \texttt{sudo} visar också
+att användaren ''gibson'' inte har möjlighet att köra program med högre
+privilegier ännu. Körningen visas i Programlistning~\ref{listing:su-gibson}.
 
-\subsubsection{Installation av programmet \texttt{ntpdate} och \texttt{ntp}}
-% TODO: ..
-
-\subsubsection{Konfiguration av \texttt{ntpdate} och \texttt{ntp}}
-% TODO: ..
-%
-% Konfigurera dem så att de använder samma atomur-server på internet från
-% ntp-pool-projektet, exempelvis <1.debian.pool.ntp.org> och
-% <2.debian.pool.ntp.org> eller <1.se.pool.ntp.org> och <2.se.pool.ntp.org>.
-% Se <http://www.pool.ntp.org/>.
-
+\begin{listing}[H]
+\shellcode{tex/su-gibson}
+\caption{Inloggning och testkörning av \texttt{sudo} med användaren ''gibson''.}
+\label{listing:su-gibson}
+\end{listing}
 

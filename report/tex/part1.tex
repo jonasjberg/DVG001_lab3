@@ -80,10 +80,6 @@ konfigureras \texttt{sudo} enligt följande:
 \end{enumerate}
 
 
-
-
-
-
 % ______________________________________________________________________________
 \subsection{Installation av \texttt{ntp}}
 Här installeras programvara för att synkronisera olika datorers
@@ -91,8 +87,9 @@ tidsinställningar.  Det görs med \texttt{Debian}-paketet \texttt{ntp} som
 ställer datorns klocka efter atomur som görs tillgängliga över internet genom
 särskilda servrar.
 
+
 % ______________________________________________________________________________
-\subsubsection{Installation av programmet \texttt{ntpdate} och \texttt{ntp}}
+\subsubsection{Sökning i paketlistor med \texttt{apt}}
 För att söka efter paketet \texttt{ntp} i lokala listor över paketförrådens
 innehåll används kommandot i Programlistning~\ref{listing:ntp-apt-search},
 som dessutom använder \texttt{grep} för att bara visa rader som börjar med
@@ -105,6 +102,8 @@ som dessutom använder \texttt{grep} för att bara visa rader som börjar med
 \end{listing}
 
 
+% ______________________________________________________________________________
+\subsubsection{Installation av programmet \texttt{ntpdate} och \texttt{ntp}}
 Programmen installeras sedan genom att köra kommandot i
 Programlistning~\ref{listing:ntp-install}, som också visar information som skrivs
 ut av \texttt{apt} under installationsprocessen.
@@ -116,12 +115,13 @@ ut av \texttt{apt} under installationsprocessen.
 \end{listing}
 
 
+% ______________________________________________________________________________
+\subsubsection{Sökning i paketlistor med \texttt{aptitude}}
 Användning av \texttt{apt}, \texttt{aptitude} eller
 \texttt{dpkg} är många gånger utbytbar, både \texttt{apt} och \texttt{aptitude}
 är abstraktioner byggda ovanpå \texttt{dpkg}. Även om \texttt{aptitude} ska vara
 det nyaste och mest användarvänliga, föredrar användare många gånger ändå
 att använda \texttt{apt}, av många olika skäl \cite{superuser:aptitude-apt}.
-
 
 Efter installationen kan ett sökkommando motsvarande det i
 Programlistning~\ref{listing:ntp-apt-search} köras, fast den här gången med
@@ -137,7 +137,7 @@ Programlistning~\ref{listing:ntp-aptitude-search}.
 
 
 % ______________________________________________________________________________
-\subsubsection{Konfiguration av \texttt{ntpdate} och \texttt{ntp}}
+\subsubsection{Konfiguration av \texttt{ntp}}
 Programmen \texttt{ntpdate} och \texttt{ntp} konfigureras så att de använder
 samma atomur-server på internet från ''ntp-pool''-projektet, exempelvis
 \url{1.debian.pool.ntp.org} och \url{2.debian.pool.ntp.org} eller
@@ -195,3 +195,18 @@ till skrivs ut. Detta visas i Programlistning~\ref{listing:ntp-reload-list}.
 \caption{Omstart av \texttt{ntpd} och listning av ''peers''.}
 \label{listing:ntp-reload-list}
 \end{listing}
+
+
+% ______________________________________________________________________________
+\subsubsection{Konfiguration av \texttt{ntpdate}}
+Konfigurationsfilen för \texttt{ntpdate} finns i sökvägen \texttt{/etc/default/ntpdate}
+och ett utdrag ur dess innehåll visas i Programlistning~\ref{listing:ntpdate-conf}.
+
+\begin{listing}[H]
+\configfile[]{tex/ntpdate-config-default}
+\caption{Konfigurationsfilen för \texttt{ntpdate}.}
+\label{listing:ntpdate-conf}
+\end{listing}
+
+På rad~6 ser vi att \texttt{ntpdate} är inställt att hämta listan över
+servrar från konfigurationsfilen för \texttt{ntp}, som redan har modifierats.

@@ -1,0 +1,18 @@
+jonas@debian:~$ sudo adduser gibson
+Adding user `gibson' ...
+Adding new group `gibson' (1001) ...
+Adding new user `gibson' (1001) with group `gibson' ...
+Creating home directory `/home/gibson' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for gibson
+Enter the new value, or press ENTER for the default
+    Full Name []: Katten Gibson 
+    Room Number []: 
+    Work Phone []: 
+    Home Phone []: 
+    Other []: 
+Is the information correct? [Y/n] y
+jonas@debian:~$
