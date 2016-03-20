@@ -1,11 +1,11 @@
 gibson@debian:/tmp$ mkdir -vp /tmp/del3/a1
 mkdir: created directory ‘/tmp/del3’
 mkdir: created directory ‘/tmp/del3/a1’
-gibson@debian:/tmp$
-gibson@debian:/tmp$ chmod -v 700 !$
+gibson@debian:/tmp$ 
+gibson@debian:/tmp$ chmod -v 700 !$ 
 chmod -v 700 /tmp/del3/a1
 mode of ‘/tmp/del3/a1’ changed from 0755 (rwxr-xr-x) to 0700 (rwx------)
-gibson@debian:/tmp$
+gibson@debian:/tmp$ 
 gibson@debian:/tmp$ sudo chown -v root:gibson /tmp/del3/a1
 changed ownership of ‘/tmp/del3/a1’ from gibson:gibson to root:gibson
-gibson@debian:/tmp$
+gibson@debian:/tmp$ 

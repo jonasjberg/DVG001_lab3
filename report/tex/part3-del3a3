@@ -1,7 +1,7 @@
 gibson@debian:/tmp$ mkdir -v /tmp/del3/a3
 mkdir: created directory ‘/tmp/del3/a3’
-gibson@debian:/tmp$
-gibson@debian:/tmp$ chmod -v 744 !$
+gibson@debian:/tmp$ 
+gibson@debian:/tmp$ chmod -v 744 !$ 
 chmod -v 744 /tmp/del3/a3
 mode of ‘/tmp/del3/a3’ changed from 0755 (rwxr-xr-x) to 0744 (rwxr--r--)
-gibson@debian:/tmp$
+gibson@debian:/tmp$ 

@@ -51,7 +51,8 @@
             breaklinks=false,
             pdfborder={0 0 0},
             backref=false,
-            colorlinks=false]{hyperref}
+            colorlinks=false,
+            hidelinks]{hyperref}
 
 \newcommand{\screenshot}[4]{
 \begin{figure}[H]
@@ -115,6 +116,8 @@ texcl=false,
 }
 
 
+\expandafter\def\csname PY@tok@err\endcsname{}
+\expandafter\def\csname PYGdefault@tok@err\endcsname{\def\PYGdefault@bc##1{{\strut ##1}}}
 
 \renewcommand\listingscaption{Programlistning}
 \renewcommand\listoflistingscaption{Programlistningar}
@@ -168,6 +171,8 @@ texcl=false,
   \listoffigures
   \listoftables
   \listoflistings
+
+  \expandafter\def\csname PY@tok@err\endcsname{}
 
   \newpage
   \input{tex/intro.tex}

@@ -1,8 +1,8 @@
 gibson@debian:/tmp$ touch /tmp/del3/a2
-gibson@debian:/tmp$ chmod -v 744 !$
+gibson@debian:/tmp$ chmod -v 744 !$ 
 chmod -v 744 /tmp/del3/a2
 mode of ‘/tmp/del3/a2’ changed from 0644 (rw-r--r--) to 0744 (rwxr--r--)
-gibson@debian:/tmp$
+gibson@debian:/tmp$ 
 gibson@debian:/tmp$ sudo chown -v gibson:root /tmp/del3/a2
 changed ownership of ‘/tmp/del3/a2’ from gibson:gibson to gibson:root
-gibson@debian:/tmp$
+gibson@debian:/tmp$ 
