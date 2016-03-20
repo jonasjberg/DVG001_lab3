@@ -134,11 +134,11 @@ Programlistning~\ref{listing:part3-setup-output}.
 \end{listing}
 }
 
-Förklaringar av vad varje kommando gör och varför det händer står under
-respektive nedanstående Programlistningar.
+Under de Programlistningar som följer står förklaringar av vad varje kommando
+gör och varför det händer skrivna under respektive Programlistning.
 
 \explainedcmd{1}{3}
-             {Kommandot misslyckas på grund av att enbart ägaren \texttt{root} 
+             {Kommandot misslyckas på grund av att enbart ägaren \texttt{root}
               har behörighet att skriva i målkatalogen.  
               Vid den andra körningen används \texttt{sudo} för att anta 
               \texttt{roots} rättigheter och kommandot lyckas.}
@@ -146,25 +146,49 @@ respektive nedanstående Programlistningar.
 \explainedcmd{4}{6}
              {Körningen av \texttt{tee} misslyckas eftersom att ''gibson''
               saknar rättigheter. Bara \texttt{echo} körs med \texttt{sudo},
-              rättigheterna ''nollställs'' då datan passerar \texttt{\|}.}
+              rättigheterna ''nollställs'' då datan passerar pipe-symbolen,
+              \texttt{|}.}
 
 \explainedcmd{7}{8}
              {Körningen av \texttt{tee} lyckas och ''Hello World'' skrivs
               till filen \texttt{a2}, som ägs av ''gibson''.}
 
 \explainedcmd{9}{11}
-             {Körningen av \texttt{tee} lyckas och ''Hello World'' skrivs
-              till filen \texttt{a2}, som ägs av ''gibson''.}
+             {Körningen av \texttt{tee} misslyckas eftersom att ''gibson''
+              saknar rättigheter för att skriva till filen \texttt{a4}. 
+              Enbart \texttt{echo} körs med \texttt{sudo}, rättigheterna
+              ''nollställs'' då datan passerar pipe-symbolen, \texttt{|}.}
 
 \explainedcmd{12}{13}
              {Innehållet i filen \texttt{a2} skrivs ut.}
 
 \explainedcmd{14}{15}
-             {Innehållet i filen \texttt{a2} skrivs ut med en överflödig
-              användning av \texttt{sudo}. Användaren ''gibson'' har redan
-              rättighet att läsa filen.}
+             {Innehållet i filen \texttt{a2} skrivs ut. Användningen av
+              \texttt{sudo} är överflödig, ''gibson'' har redan rättighet att
+              läsa filen.}
 
 \explainedcmd{16}{17}
-             {Innehållet i filen \texttt{a2} skrivs ut med en överflödig
-              användning av \texttt{sudo}. Användaren ''gibson'' har redan
-              rättighet att läsa filen.}
+             {Körningen misslyckas eftersom att filen \texttt{a4} ägs av
+              \texttt{root} och ''gibson'' är inte medlem i gruppen 
+              \texttt{root}.}
+
+\explainedcmd{18}{18}
+             {Körningen lyckas men filen \texttt{a4} är tom då kommandot för
+              att skriva till filen misslyckades. Den text som skrevs ut för
+              att beskriva felet skrevs till \texttt{stderror}, medan 
+              \texttt{stdout}, som skrevs till filen, var tomt.}
+
+\explainedcmd{19}{20}
+             {Körningen lyckas trots att ''gibson'' inte har rättighet att
+              skriva till \texttt{a2} då kommandot körs som \texttt{root} med
+              \texttt{sudo}.}
+
+\explainedcmd{21}{22}
+             {Körningen lyckas, ''gibson'' har rättighet att läsa \texttt{a2}.}
+
+\explainedcmd{23}{24}
+             {Körningen lyckas, ''gibson'' har rättighet att läsa \texttt{a2}.
+              Användningen av \texttt{sudo} är överflödig.}
+
+\explainedcmd{25}{26}
+             {Hela katalogstrukturen tas bort.}
