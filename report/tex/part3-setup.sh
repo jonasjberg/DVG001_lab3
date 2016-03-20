@@ -17,19 +17,23 @@ if [ -e "$WORKDIR" ]; then
     rm -vrf "$WORKDIR" || sudo rm -rf "$WORKDIR"
 fi
 
-mkdir -vp "${WORKDIR}/a1"
-chmod -v 700 "${WORKDIR}/a1"
-sudo chown -v root:gibson "${WORKDIR}/a1"
+A1="${WORKDIR}/a1"
+mkdir -vp "$A1"
+chmod -v 700 "$A1"
+sudo chown -v root:gibson "$A1"
 
-touch "${WORKDIR}/a2"
-chmod -v 744 "${WORKDIR}/a2"
-sudo chown -v gibson:root "${WORKDIR}/a2"
+A2="${WORKDIR}/a2"
+touch "$A2"
+chmod -v 744 "$A2"
+sudo chown -v gibson:root "$A2"
 
-mkdir -v "${WORKDIR}/a3"
-chmod -v 744 "${WORKDIR}/a3"
+A3="${WORKDIR}/a3"
+mkdir -v "$A3"
+chmod -v 744 "$A3"
 
-sudo touch "${WORKDIR}/a4"
-sudo chmod -v 770 "${WORKDIR}/a4"
+A4="${WORKDIR}/a4"
+sudo touch "$A4"
+sudo chmod -v 770 "$A4"
 
 # Visa resultatet.
 for entry in ${WORKDIR}/{,*} ; do ls -lthrd "${entry}"; done | column -t -s' '
