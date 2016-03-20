@@ -106,7 +106,8 @@ Programlistning~\ref{listing:part3-setup-output}.
 
 \begin{listing}[H]
 \shellcode{tex/part3-setup.sh}
-\caption{Skript som körs för att skapa filer och kataloger med särskilda rättigheter.}
+\caption[Skript för att skapa katalogstruktur]{Skript som körs för att skapa
+         filer och kataloger med särskilda rättigheter.}
 \label{listing:part3-setup}
 \end{listing}
 
@@ -129,7 +130,7 @@ Programlistning~\ref{listing:part3-setup-output}.
 \newcommand{\explainedcmd}[4]{
 \begin{listing}[H]
 \shellcode[firstline={#1},lastline={#2}]{tex/part3-commands}
-\caption{#3}
+\caption[#3]{#4}
 \label{listing:ntp-conf-mod}
 \end{listing}
 }
@@ -138,59 +139,71 @@ Under de Programlistningar som följer står förklaringar av vad varje kommando
 gör och varför det händer skrivna under respektive Programlistning.
 
 \explainedcmd{1}{3}
+             {Kommandot \texttt{touch /tmp/del3/a1/f1}}
              {Kommandot misslyckas på grund av att enbart ägaren \texttt{root}
               har behörighet att skriva i målkatalogen.  
               Vid den andra körningen används \texttt{sudo} för att anta 
               \texttt{roots} rättigheter och kommandot lyckas.}
 
 \explainedcmd{4}{6}
+             {Kommandot \texttt{sudo echo "Hello World" | tee /tmp/del3/a3/f1}}
              {Körningen av \texttt{tee} misslyckas eftersom att ''gibson''
               saknar rättigheter. Bara \texttt{echo} körs med \texttt{sudo},
               rättigheterna ''nollställs'' då datan passerar pipe-symbolen,
               \texttt{|}.}
 
 \explainedcmd{7}{8}
+             {Kommandot \texttt{sudo echo "Hello World" | tee /tmp/del3/a2}}
              {Körningen av \texttt{tee} lyckas och ''Hello World'' skrivs
               till filen \texttt{a2}, som ägs av ''gibson''.}
 
 \explainedcmd{9}{11}
+             {Kommandot \texttt{sudo echo "Hello World" | tee /tmp/del3/a4}}
              {Körningen av \texttt{tee} misslyckas eftersom att ''gibson''
               saknar rättigheter för att skriva till filen \texttt{a4}. 
               Enbart \texttt{echo} körs med \texttt{sudo}, rättigheterna
               ''nollställs'' då datan passerar pipe-symbolen, \texttt{|}.}
 
 \explainedcmd{12}{13}
+             {Kommandot \texttt{cat /tmp/del3/a2}}
              {Innehållet i filen \texttt{a2} skrivs ut.}
 
 \explainedcmd{14}{15}
+             {Kommandot \texttt{sudo cat /tmp/del3/a2}}
              {Innehållet i filen \texttt{a2} skrivs ut. Användningen av
               \texttt{sudo} är överflödig, ''gibson'' har redan rättighet att
               läsa filen.}
 
 \explainedcmd{16}{17}
+             {Kommandot \texttt{cat /tmp/del3/a4}}
              {Körningen misslyckas eftersom att filen \texttt{a4} ägs av
               \texttt{root} och att ''gibson'' är inte medlem i gruppen 
               \texttt{root} och saknar därmed rättigheter.}
 
 \explainedcmd{18}{18}
+             {Kommandot \texttt{sudo cat /tmp/del3/a4}}
              {Körningen lyckas men filen \texttt{a4} är tom då kommandot för
               att skriva till filen misslyckades. Den text som skrevs ut för
               att beskriva felet skrevs till \texttt{stderror}, medan 
               \texttt{stdout} som skrevs till filen, var tomt.}
 
 \explainedcmd{19}{20}
+             {Kommandot \texttt{echo "Goodbye World" | sudo tee /tmp/del3/a2}}
              {Körningen lyckas trots att ''gibson'' inte har rättighet att
               skriva till \texttt{a2} då kommandot körs som \texttt{root} med
               \texttt{sudo}.}
 
 \explainedcmd{21}{22}
+             {Kommandot \texttt{cat /tmp/del3/a2}}
              {Körningen lyckas, ''gibson'' har rättighet att läsa \texttt{a2}.}
 
 \explainedcmd{23}{24}
+             {Kommandot \texttt{sudo cat /tmp/del3/a2}}
              {Körningen lyckas, ''gibson'' har rättighet att läsa \texttt{a2}.
               Användningen av \texttt{sudo} är överflödig.}
 
 \explainedcmd{25}{26}
+             {Kommandot \texttt{sudo rm -r /tmp/del3/}}
              {Hela katalogstrukturen tas bort.}
 
 \subsection{Redovisning av resultat}
@@ -199,11 +212,13 @@ skript som visas i Programlistning~\ref{listing:part3-treeish}.
 
 Exekvering visas i Programlistning~\ref{listing:part3-treeish-output}. Kataloger
 och filer skrivs ut och märks i den vänstra kolumnen, filers innehåll skrivs ut
-i den högra kolumnen.
+i den högra kolumnen. Notera att det sista kommandot \texttt{sudo rm -r /tmp/del3/}
+har exkluderats för att det ska vara möjligt att titta på resultatet.
 
 \begin{listing}[H]
 \shellcode{tex/treeish.sh}
-\caption{Skript som körs för att skapa filer och kataloger med särskilda rättigheter.}
+\caption[Skript för att skapa katalogstruktur med rättigheter]{Skript som körs
+         för att skapa filer och kataloger med särskilda rättigheter.}
 \label{listing:part3-treeish}
 \end{listing}
 

@@ -17,16 +17,29 @@
 \section{Inledning}\label{inledning}
 % Skriv en kort inledning här som beskriver kortfattat vad rapporten handlar
 % om. Den skall vara orienterande om Bakgrund och Syfte.
+Laborationen behandlar hantering av användare och grupper, rättigheter och
+filåtkomst, installation och konfiguration av program, behandling av kataloger
+och filer, samt visualisering av filsystemet med skapandet av en trädstruktur.
+En del pakethantering med installation och konfiguration av program kommer
+också att behandlas, särskilt tidssynkronisering med \texttt{ntd} och körning
+av program och kommandon med administratörsrättigheter med \texttt{sudo}.
 
 
 % ______________________________________________________________________________
 \subsection{Bakgrund}
-% Beskriv lite mer ingående om bakgrunden till uppgiften, vad den handlar om.
+%    Beskriv lite mer ingående om bakgrunden till uppgiften, vad den handlar om.
+Laborationen bygger vidare på de föregående laborationerna och behandlar vidare
+grundläggande koncept i administation av \texttt{UNIX}-liknande system.
 
+Den virtuella maskin som skapades tidigare under kursens gång används under
+laborationen.
 
 % ______________________________________________________________________________
 \subsection{Syfte}
 % Skriv lite mer ingående om syftet med uppgiften.
+Syftet med laborationen är att demonstrera och öva på systemadministration,
+däribland hantering av rättigheter för användare, grupper, filer och kataloger.
+
 
 % ______________________________________________________________________________
 \subsection{Arbetsmetod}
@@ -38,9 +51,16 @@ under laborationen:
 
 \begin{itemize}
   \item Laborationen utförs på en \texttt{ProBook-6545b} laptop som kör
-        \texttt{Xubuntu 15.10} på kerneln \texttt{Linux 3.19.0-28-generic}.
+        \texttt{Xubuntu 15.10} på kerneln \texttt{Linux 3.19.0-28}.
 
   \item Rapporten skrivs i \LaTeX\  som kompileras till pdf med \texttt{latexmk}.
+        Detta sker på värdsystemet.
+
+  \item Virtualisering sker med \texttt{Oracle VirtualBox} version
+        \texttt{5.0.10\_Ubuntu r104061}.
+
+  \item Utveckling av programkod och testkörning sker i gästsystemet som kör
+        \texttt{Debian 7.3 (jessie)} på kerneln \texttt{Linux 3.16.0-4}.
 
   \item Både rapporten och koden skrivs med texteditorn \texttt{Vim}.
 
@@ -55,9 +75,6 @@ under laborationen:
             \texttt{git clone git@github.com:jonasjberg/DVG001\_lab3.git}
 
     \end{itemize}
-
-  \item Virtualisering sker med \texttt{Oracle VirtualBox} version
-        \texttt{5.0.10\_Ubuntu r104061}.
 \end{itemize}
 
 
