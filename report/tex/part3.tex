@@ -95,11 +95,13 @@ Resultatet i Programlistning~\ref{listing:part3-verify} matchar den
 struktur som efterfrågas i Tabell~\ref{table:tree}.
 
 
-
 % ______________________________________________________________________________
-\subsection{Exekvering av kommandon}
-För att skapa filer och kataloger med rättigheter används ett skript som visas
-i Programlistning~\ref{listing:part3-setup}. Körning av skriptet visas i
+\subsubsection{Skript för skapande av katalogstruktur}
+Eftersom att katalogstrukturen ligger i \texttt{/tmp/} så är det stor risk att
+den raderas när systemet startar om. Ovanstående kommandon samlas i ett skript
+så att katalogstrukturen enkelt kan återskapas efter en omstart.
+
+Skriptet visas i Programlistning~\ref{listing:part3-setup} och körning visas i
 Programlistning~\ref{listing:part3-setup-output}.
 
 \begin{listing}[H]
@@ -114,7 +116,9 @@ Programlistning~\ref{listing:part3-setup-output}.
 \label{listing:part3-setup-output}
 \end{listing}
 
-%
+
+% ______________________________________________________________________________
+\subsection{Exekvering av kommandon}
 % Förklara vad varje kommandorad gör och varför det händer, 
 % samt vilken användare som utför delkommandon.
 %
@@ -122,4 +126,45 @@ Programlistning~\ref{listing:part3-setup-output}.
 %
 % Katalogstrukturen redovisas lämpligen med kommandot `tree(1)` med växeln `-a`.
 
+\newcommand{\explainedcmd}[4]{
+\begin{listing}[H]
+\shellcode[firstline={#1},lastline={#2}]{tex/part3-commands}
+\caption{#3}
+\label{listing:ntp-conf-mod}
+\end{listing}
+}
 
+Förklaringar av vad varje kommando gör och varför det händer står under
+respektive nedanstående Programlistningar.
+
+\explainedcmd{1}{3}
+             {Kommandot misslyckas på grund av att enbart ägaren \texttt{root} 
+              har behörighet att skriva i målkatalogen.  
+              Vid den andra körningen används \texttt{sudo} för att anta 
+              \texttt{roots} rättigheter och kommandot lyckas.}
+
+\explainedcmd{4}{6}
+             {Körningen av \texttt{tee} misslyckas eftersom att ''gibson''
+              saknar rättigheter. Bara \texttt{echo} körs med \texttt{sudo},
+              rättigheterna ''nollställs'' då datan passerar \texttt{\|}.}
+
+\explainedcmd{7}{8}
+             {Körningen av \texttt{tee} lyckas och ''Hello World'' skrivs
+              till filen \texttt{a2}, som ägs av ''gibson''.}
+
+\explainedcmd{9}{11}
+             {Körningen av \texttt{tee} lyckas och ''Hello World'' skrivs
+              till filen \texttt{a2}, som ägs av ''gibson''.}
+
+\explainedcmd{12}{13}
+             {Innehållet i filen \texttt{a2} skrivs ut.}
+
+\explainedcmd{14}{15}
+             {Innehållet i filen \texttt{a2} skrivs ut med en överflödig
+              användning av \texttt{sudo}. Användaren ''gibson'' har redan
+              rättighet att läsa filen.}
+
+\explainedcmd{16}{17}
+             {Innehållet i filen \texttt{a2} skrivs ut med en överflödig
+              användning av \texttt{sudo}. Användaren ''gibson'' har redan
+              rättighet att läsa filen.}
