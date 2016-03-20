@@ -98,8 +98,22 @@ struktur som efterfrågas i Tabell~\ref{table:tree}.
 
 % ______________________________________________________________________________
 \subsection{Exekvering av kommandon}
-% TODO: ..
-% Skriv de kommandon som använts för att skapa filer, kataloger, rättigheter. 
+För att skapa filer och kataloger med rättigheter används ett skript som visas
+i Programlistning~\ref{listing:part3-setup}. Körning av skriptet visas i
+Programlistning~\ref{listing:part3-setup-output}.
+
+\begin{listing}[H]
+\shellcode{tex/part3-setup.sh}
+\caption{Skript som körs för att skapa filer och kataloger med särskilda rättigheter.}
+\label{listing:part3-setup}
+\end{listing}
+
+\begin{listing}[H]
+\shellcode{tex/part3-setup-output}
+\caption{Körning av skriptet i Programlistning~\ref{listing:part3-setup}.}
+\label{listing:part3-setup-output}
+\end{listing}
+
 %
 % Förklara vad varje kommandorad gör och varför det händer, 
 % samt vilken användare som utför delkommandon.

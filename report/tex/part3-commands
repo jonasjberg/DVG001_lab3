@@ -1,0 +1,27 @@
+gibson@debian:/tmp$ 
+gibson@debian:/tmp$ touch /tmp/del3/a1/f1
+touch: cannot touch ‘/tmp/del3/a1/f1’: Permission denied
+gibson@debian:/tmp$ sudo touch /tmp/del3/a3/f1
+gibson@debian:/tmp$ sudo echo "Hello World" | tee /tmp/del3/a3/f1
+tee: /tmp/del3/a3/f1: Permission denied
+Hello World
+gibson@debian:/tmp$ sudo echo "Hello World" | tee /tmp/del3/a2
+Hello World
+gibson@debian:/tmp$ sudo echo "Hello World" | tee /tmp/del3/a4
+tee: /tmp/del3/a4: Permission denied
+Hello World
+gibson@debian:/tmp$ cat /tmp/del3/a2
+Hello World
+gibson@debian:/tmp$ sudo cat /tmp/del3/a2
+Hello World
+gibson@debian:/tmp$ cat /tmp/del3/a4
+cat: /tmp/del3/a4: Permission denied
+gibson@debian:/tmp$ sudo cat /tmp/del3/a4
+gibson@debian:/tmp$ echo "Goodbye World" | sudo tee /tmp/del3/a2
+Goodbye World
+gibson@debian:/tmp$ cat /tmp/del3/a2
+Goodbye World
+gibson@debian:/tmp$ sudo cat /tmp/del3/a2
+Goodbye World
+gibson@debian:/tmp$ sudo rm -r /tmp/del3/ # Observera att det är /tmp
+gibson@debian:/tmp$ 
