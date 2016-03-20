@@ -12,8 +12,9 @@ set -e                    # Avbryt om ett kommando returnerar fel (nollskiljt)
 
 WORKDIR="/tmp/del3"
 
+# Ta bort katalogstruktur om den redan existerar.
 if [ -e "$WORKDIR" ]; then 
-    rm -rf "$WORKDIR" || sudo rm -rf "$WORKDIR"
+    rm -vrf "$WORKDIR" || sudo rm -rf "$WORKDIR"
 fi
 
 mkdir -vp "${WORKDIR}/a1"
@@ -30,6 +31,6 @@ chmod -v 744 "${WORKDIR}/a3"
 sudo touch "${WORKDIR}/a4"
 sudo chmod -v 770 "${WORKDIR}/a4"
 
-
+# Visa resultatet.
 for entry in ${WORKDIR}/{,*} ; do ls -lthrd "${entry}"; done | column -t -s' '
 
