@@ -40,7 +40,7 @@ och kataloger. Den katalogstruktur som efterfrågas visas i Tabell~\ref{table:tr
 
 % ______________________________________________________________________________
 \subsubsection{Skapa \texttt{/tmp/del3/a1}}
-Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a1}.
+Katalogen skapas enligt Programlistning~\ref{listing:part3-del3a1}.
 
 \begin{listing}[H]
 \shellcode{tex/part3-del3a1}
@@ -50,7 +50,7 @@ Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a1}.
 
 % ______________________________________________________________________________
 \subsubsection{Skapa \texttt{/tmp/del3/a2}}
-Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a2}.
+Filen skapas enligt Programlistning~\ref{listing:part3-del3a2}.
 
 \begin{listing}[H]
 \shellcode{tex/part3-del3a2}
@@ -60,7 +60,7 @@ Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a2}.
 
 % ______________________________________________________________________________
 \subsubsection{Skapa \texttt{/tmp/del3/a3}}
-Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a3}.
+Katalogen skapas enligt Programlistning~\ref{listing:part3-del3a3}.
 
 \begin{listing}[H]
 \shellcode{tex/part3-del3a3}
@@ -70,13 +70,29 @@ Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a3}.
 
 % ______________________________________________________________________________
 \subsubsection{Skapa \texttt{/tmp/del3/a4}}
-Katalogerna skapas enligt Programlistning~\ref{listing:part3-del3a4}.
+Filen skapas enligt Programlistning~\ref{listing:part3-del3a4}.
 
 \begin{listing}[H]
 \shellcode{tex/part3-del3a4}
 \caption{Skapandet av \texttt{/tmp/del3/a4}}
 \label{listing:part3-del3a4}
 \end{listing}
+
+% ______________________________________________________________________________
+\subsubsection{Verifiering av skapade filer i \texttt{/tmp/del3}}
+För att kontrollera att de skapade filerna och katalogerna har de egenskaper
+som efterfrågats körs programmet i Programlistning~\ref{listing:part3-verify}.
+Programmet loopar över innehållet i katalogen \texttt{/tmp/del3} och katalogen
+själv med en möjligen onödigt komplex parameter-expansion \texttt{{,*} som
+expanderas till .. % TODO: .....
+
+\begin{listing}[H]
+\shellcode{tex/part3-verify}
+\caption{Verifiering av skapade filer i \texttt{/tmp/del3}}
+\label{listing:part3-verify}
+\end{listing}
+
+
 
 
 % ______________________________________________________________________________
