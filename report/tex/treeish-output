@@ -1,0 +1,8 @@
+root@debian:/tmp/del3# /home/jonas/Documents/lab3/treeish 
+[kat] /tmp/del3           
+[kat] /tmp/del3/a3        
+[fil] /tmp/del3/a3/f1      (innehåll: "")
+[fil] /tmp/del3/a4         (innehåll: "")
+[fil] /tmp/del3/a2         (innehåll: "Goodbye World")
+[kat] /tmp/del3/a1        
+root@debian:/tmp/del3# 

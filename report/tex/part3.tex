@@ -169,14 +169,14 @@ gör och varför det händer skrivna under respektive Programlistning.
 
 \explainedcmd{16}{17}
              {Körningen misslyckas eftersom att filen \texttt{a4} ägs av
-              \texttt{root} och ''gibson'' är inte medlem i gruppen 
-              \texttt{root}.}
+              \texttt{root} och att ''gibson'' är inte medlem i gruppen 
+              \texttt{root} och saknar därmed rättigheter.}
 
 \explainedcmd{18}{18}
              {Körningen lyckas men filen \texttt{a4} är tom då kommandot för
               att skriva till filen misslyckades. Den text som skrevs ut för
               att beskriva felet skrevs till \texttt{stderror}, medan 
-              \texttt{stdout}, som skrevs till filen, var tomt.}
+              \texttt{stdout} som skrevs till filen, var tomt.}
 
 \explainedcmd{19}{20}
              {Körningen lyckas trots att ''gibson'' inte har rättighet att
@@ -192,3 +192,23 @@ gör och varför det händer skrivna under respektive Programlistning.
 
 \explainedcmd{25}{26}
              {Hela katalogstrukturen tas bort.}
+
+\subsection{Verifiering av result}
+För att kontrollera katalogstrukturens innehåll används ännu ett skript som visas
+i Programlistning~\ref{listing:part3-treeish}.
+
+Exekvering visas i Programlistning~\ref{listing:part3-treeish-output}, kataloger
+och filer skrivs ut och märks i den vänstra kolumnen. Filers innehåll skrivs ut
+i den högre kolumnen.
+
+\begin{listing}[H]
+\shellcode{tex/treeish.sh}
+\caption{Skript som körs för att skapa filer och kataloger med särskilda rättigheter.}
+\label{listing:part3-treeish}
+\end{listing}
+
+\begin{listing}[H]
+\shellcode{tex/treeish-output}
+\caption{Körning av skriptet i Programlistning~\ref{listing:part3-treeish}.}
+\label{listing:part3-treeish-output}
+\end{listing}
