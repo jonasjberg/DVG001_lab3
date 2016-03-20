@@ -2,7 +2,7 @@
 # ____________________________________________________________________________
 #
 # DVG001 -- Introduktion till Linux och små nätverk
-#                              Inlämningsuppgift #2
+#                              Inlämningsuppgift #3
 # Author:   Jonas Sjöberg
 #           tel12jsg@student.hig.se
 # Date:     2016-03-15 -- 2016-03-20 
